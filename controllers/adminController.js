@@ -7,6 +7,9 @@ import * as adminModel from "../models/adminModel.js"
 // admin login
 
 export const loginAdmin = (req, res) => {
+
+  const jwt_key= process.env.JWT_Key;
+
   const { email, password } = req.body;
 
   //sending credentials and collecting result
@@ -29,8 +32,8 @@ export const loginAdmin = (req, res) => {
     //create token
     const token = jwt.sign(
       { id: admin.id, email: admin.email },
-      "healthngo$1234567890",
-      { expiresIn: "10m" },
+      jwt_key,
+      { expiresIn: "2m" },
     );
 
     //sending response with jwt token

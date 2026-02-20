@@ -2,6 +2,10 @@ import jwt from "jsonwebtoken";
 
 // verify admin
 export const verifyAdmin = (req, res, next) => {
+
+  const jwt_key= process.env.JWT_Key;
+
+
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
@@ -10,7 +14,7 @@ export const verifyAdmin = (req, res, next) => {
 
   try {
     //verifing admin with token and signature
-    const verified = jwt.verify(token, "healthngo$1234567890");
+    const verified = jwt.verify(token, jwt_key);
     req.admin = verified;
     next();
   } catch (err) {
