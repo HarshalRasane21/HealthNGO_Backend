@@ -8,7 +8,7 @@ import app from './app.js';
 
 
 //port
-const PORT = 5000;
+const PORT = process.env.PORT;
 
 
 app.listen(PORT, () => {
