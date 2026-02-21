@@ -33,7 +33,7 @@ export const loginAdmin = (req, res) => {
     const token = jwt.sign(
       { id: admin.id, email: admin.email },
       jwt_key,
-      { expiresIn: "2m" },
+      { expiresIn: "10m" },
     );
 
     //sending response with jwt token
